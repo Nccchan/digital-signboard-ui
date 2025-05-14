@@ -99,6 +99,22 @@ function updateLabels() {
     const key = lab.getAttribute("data-key");
     if (key) lab.textContent = labelMap[key];
   });
+
+  // セレクトボックスのオプションを翻訳
+  document.querySelectorAll("select").forEach(select => {
+    select.querySelectorAll("option").forEach(option => {
+      if (select.name === "medium") {
+        option.textContent = lang === "ja" ? Object.keys(mediumMap).find(key => mediumMap[key] === option.textContent) || option.textContent : mediumMap[option.textContent] || option.textContent;
+      } else if (select.name === "result") {
+        option.textContent = lang === "ja" ? Object.keys(resultMap).find(key => resultMap[key] === option.textContent) || option.textContent : resultMap[option.textContent] || option.textContent;
+      } else if (select.name === "witnessType") {
+        option.textContent = lang === "ja" ? Object.keys(witnessMap).find(key => witnessMap[key] === option.textContent) || option.textContent : witnessMap[option.textContent] || option.textContent;
+      } else if (select.name === "holdUnit") {
+        option.textContent = lang === "ja" ? Object.keys(holdMap).find(key => holdMap[key] === option.textContent) || option.textContent : holdMap[option.textContent] || option.textContent;
+      }
+    });
+  });
+
   document.querySelector(".lang-switch").textContent = lang === "ja" ? "English" : "日本語";
   document.querySelector(".mode-switch").textContent = lang === "ja" ? "画面表示" : "Form Mode";
   document.querySelector("title").textContent = lang === "ja" ? "耐圧試験" : "Pressure Test";
