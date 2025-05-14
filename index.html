@@ -8,8 +8,8 @@
   <!-- Google Fonts のインポート -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* ページの高さや幅をタブレット・A4用紙向けに調整 */
+　<style>
+/* ページの高さや幅をタブレット・A4用紙向けに調整 */
 @media print, screen and (max-width: 1024px) {
   body {
     padding: 1rem;
@@ -22,6 +22,7 @@
   table {
     font-size: 1.2rem; /* テキストの縮小を適度に行う */
     width: 100%; /* テーブルの幅をページ幅に合わせる */
+    page-break-inside: avoid; /* ページ内での改行を防止 */
   }
   th, td {
     padding: 1rem; /* 余白を減らして情報を詰める */
@@ -47,69 +48,81 @@
 @media print {
   @page {
     size: A4; /* A4用紙サイズに設定 */
-    margin: 1cm; /* 印刷時の余白を設定 */
+    margin: 0.5cm; /* 印刷時の余白を設定 */
   }
   body {
-    font-size: 1rem; /* 印刷用にフォントサイズを調整 */
+    font-size: 0.9rem; /* 印刷用にフォントサイズを調整 */
+    margin: 0;
+  }
+  table {
+    width: 100%; /* テーブルの幅をページ幅に合わせる */
+    font-size: 1rem; /* テーブル文字のサイズを少し小さく */
+    page-break-inside: avoid; /* ページ内での改行を防止 */
+  }
+  th, td {
+    padding: 0.5rem; /* セルの余白を小さく */
   }
   .buttons {
     display: none; /* 印刷時にボタンを非表示 */
   }
 }
-    body {
-      font-family: 'Noto Sans', sans-serif; /* フォントを Noto Sans に変更 */
-      padding: 2rem;
-      background: #fff;
-      color: #000;
-    }
-    .dark {
-      background: #111;
-      color: #fff;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-    }
-    label {
-      display: block;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-    input, select {
-      padding: 0.5rem;
-      width: 100%;
-      font-size: 1.4rem; /* 入力フィールドとセレクトボックスの文字サイズを調整 */
-      margin-top: 0.25rem;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 2rem;
-      font-size: 1.5rem; /* テーブルの文字サイズを大きく */
-    }
-    th, td {
-      border: 1px solid #000;
-      padding: 1.5rem; /* セルのパディングを増加 */
-      text-align: left;
-      font-size: 1.4rem; /* セルの文字サイズを調整 */
-    }
-    .header {
-      font-size: 2rem; /* ヘッダーの文字サイズを大きく */
-      font-weight: bold;
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .lang-switch, .mode-switch, .print-btn {
-      margin-right: 1rem;
-    }
-    .buttons {
-      text-align: right;
-      margin-bottom: 1rem;
-    }
-    .buttons button {
-      font-size: 1.2rem; /* ボタンの文字サイズを調整 */
-    }
-  </style>
+
+/* 共通スタイル */
+body {
+  font-family: 'Noto Sans', sans-serif; /* フォントを Noto Sans に変更 */
+  padding: 2rem;
+  background: #fff;
+  color: #000;
+}
+.dark {
+  background: #111;
+  color: #fff;
+}
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+input, select {
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1.4rem; /* 入力フィールドとセレクトボックスの文字サイズを調整 */
+  margin-top: 0.25rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-size: 1.5rem; /* テーブルの文字サイズを大きく */
+  page-break-inside: avoid; /* ページ内での改行を防止 */
+}
+th, td {
+  border: 1px solid #000;
+  padding: 1.5rem; /* セルのパディングを増加 */
+  text-align: left;
+  font-size: 1.4rem; /* セルの文字サイズを調整 */
+}
+.header {
+  font-size: 2rem; /* ヘッダーの文字サイズを大きく */
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
+.lang-switch, .mode-switch, .print-btn {
+  margin-right: 1rem;
+}
+.buttons {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+.buttons button {
+  font-size: 1.2rem; /* ボタンの文字サイズを調整 */
+}
+　</style>
 </head>
 <body>
 <div class="container">
