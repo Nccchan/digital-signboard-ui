@@ -9,6 +9,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ページの高さや幅をタブレット・A4用紙向けに調整 */
+@media print, screen and (max-width: 1024px) {
+  body {
+    padding: 1rem;
+    margin: 0;
+  }
+  .container {
+    max-width: 100%; /* タブレットやA4幅に収まるように調整 */
+    margin: 0;
+  }
+  table {
+    font-size: 1.2rem; /* テキストの縮小を適度に行う */
+    width: 100%; /* テーブルの幅をページ幅に合わせる */
+  }
+  th, td {
+    padding: 1rem; /* 余白を減らして情報を詰める */
+  }
+  .header {
+    font-size: 1.8rem; /* ヘッダーのサイズを調整 */
+  }
+  input, select {
+    font-size: 1.2rem; /* 入力欄の文字サイズを調整 */
+  }
+  .buttons {
+    display: flex; /* ボタンを詰めて配置 */
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .buttons button {
+    font-size: 1rem; /* ボタン文字サイズを調整 */
+    padding: 0.5rem 1rem; /* ボタンの余白を調整 */
+  }
+}
+
+/* 印刷モードの場合にA4サイズに収める */
+@media print {
+  @page {
+    size: A4; /* A4用紙サイズに設定 */
+    margin: 1cm; /* 印刷時の余白を設定 */
+  }
+  body {
+    font-size: 1rem; /* 印刷用にフォントサイズを調整 */
+  }
+  .buttons {
+    display: none; /* 印刷時にボタンを非表示 */
+  }
+}
     body {
       font-family: 'Noto Sans', sans-serif; /* フォントを Noto Sans に変更 */
       padding: 2rem;
